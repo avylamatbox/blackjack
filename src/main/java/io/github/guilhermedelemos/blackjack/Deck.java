@@ -1,5 +1,6 @@
 package io.github.guilhermedelemos.blackjack;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -59,6 +60,10 @@ public class Deck {
 
     public int cardsDiscarded() {
         return this.originalSize - this.cards.size();
+    }
+
+    public Card showCardsOnDeck(int index){
+        return cards.get(index);
     }
 
 }

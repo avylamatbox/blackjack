@@ -2,10 +2,13 @@ package io.github.guilhermedelemos;
 
 import io.github.guilhermedelemos.blackjack.Card;
 import io.github.guilhermedelemos.blackjack.Deck;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class DeckTest {
 
@@ -28,5 +31,24 @@ public class DeckTest {
         deck.draw();
         assertTrue(deck.cardsDiscarded() > amount);
     }
+
+    @Test void cardsShuffle(){
+        Deck deck = new Deck();
+        List<Card> cardsAtual = new ArrayList<Card>();
+        for (int i = 0; i < 52; i++){
+            cardsAtual.add(deck.showCardsOnDeck(i));
+        }
+        deck.shuffle();
+        List<Card> deckShuffle = new ArrayList<Card>();
+        for (int i = 0; i < 52; i++){
+            deckShuffle.add(deck.showCardsOnDeck(i));
+        }
+
+        assertNotEquals(cardsAtual, deckShuffle);
+    }
+
+
+
+
 
 }
